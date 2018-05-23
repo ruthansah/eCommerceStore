@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
+This is an eCommerce store where a user can add items to a shopping cart,  sign in with google, and checkout. This project was built using Angular 4, bootstrap, JavaScript, and AngularFirebase for persistence.
+
+A working demo can be found here: https://myshop-c1c31.firebaseapp.com/
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
