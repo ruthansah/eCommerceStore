@@ -1,0 +1,33 @@
+<div class="card" *ngIf="cart">
+  
+  <div class="card-body">
+    <h5 class="card-title">Order Summary</h5>
+    <p class="card-text">You have {{cart.totalItemsCount}}  items in your shopping cart</p>
+    <table class="table" >
+      <thead>
+          <tr>
+              <th></th>
+              <th></th>
+              <th>Price</th>
+              <th>Quantity</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let prod of cart.items">
+                <td>
+                  <img  [src]="prod.product.imageUrl"class="img-thumbnail" style="height:80px; width:100px;">
+              </td>
+              <td> {{prod.product.title}} </td>
+              <td>{{prod.product.price | currency }}</td>
+              <td>{{prod.quantity}}</td>
+          </tr>
+      </tbody>
+  </table>
+
+    </div>
+    <div class="card-footer">
+      <div class="float-right font-weight-bold">
+        Total:  {{cart.totalPrice | currency}}
+      </div>
+    </div>
+</div>

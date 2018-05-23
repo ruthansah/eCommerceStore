@@ -1,0 +1,25 @@
+<!--div *ngIf="orders"> You have no past orders</div-->
+
+      <div *ngFor="let prod of orders; let i=index" style="margin-bottom:20px">
+        <div class="card" >
+            <div class="card-header">
+                Date Placed: {{prod.datePlaced | date}}
+              </div>
+            <div class="card-body">
+              <h5 class="card-title">Order Summary</h5>
+              <div class="row"*ngFor="let imp of prod.items">
+                  <div class="col-md-3">
+                      <img  [src]="imp.product.imageUrl"class="img-thumbnail" style="height:60px; width:80px;">
+                  </div>
+                  <div class="col-md-3"> {{imp.product.title}}</div> 
+                  <div class="col-md-3">Quantity: {{imp.quantity}}</div>
+                  <div class="col-md-3">Price: {{imp.product.price | currency}}</div>
+              </div>
+            </div>
+            <!--div class="card-footer">
+                <div class="float-right font-weight-bold">
+                  Total:  {{prod | json}}
+                </div>
+              </div-->
+          </div>
+        </div>

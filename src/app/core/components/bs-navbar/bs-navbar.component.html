@@ -1,0 +1,39 @@
+<div class="container-fluid" style="background-color:rgb(248, 247, 247)">
+    <header class="navbar navbar-light navbar-fixed-top navbar-expand-lg">
+  
+      <a class="navbar-brand" routerLink="/" (click)="navbarCollapsed = true">Whole Products</a>
+  
+      <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
+              [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="navbar-collapse" [ngbCollapse]="navbarCollapsed" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="">
+              <a routerLink="/shopping-cart" style="margin-right:10px">Shopping Cart 
+                <span class="badge badge-warning badge-pill" *ngIf="cart$ | async as cart">
+                  {{cart.totalItemsCount}}
+                </span>
+                </a>
+            </li>
+            <ng-template #anonymousUser>
+                <li><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              </ng-template>
+              <li ngbDropdown *ngIf="appUser;else anonymousUser" class="dropdown show">
+                  <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">{{appUser.name}}
+                  <span class="caret"></span></a>
+                  <ul ngbDropdownMenu class="dropdown-menu show">
+                    <li><a routerLink="/my/orders">My Orders</a></li>
+                    <ng-container *ngIf="appUser.isAdmin">
+                      <li><a routerLink="/admin/orders">Manage Orders</a></li>
+                      <li><a routerLink="/admin/products">Manage Products</a></li>
+                    </ng-container>       
+                    <li><a (click)="logout()">Log Out</a></li>
+                  </ul>
+                </li>
+        </ul>
+  
+          </div>
+    </header>
+  </div>
